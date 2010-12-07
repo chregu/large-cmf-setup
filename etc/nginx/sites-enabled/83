@@ -1,0 +1,15 @@
+server {
+    gzip  off;
+        listen   83; ## listen for ipv4
+
+	server_name  "foo";
+        server_name  "";
+
+        access_log  /var/log/nginx/83.access.log;
+
+        location / {
+                proxy_pass   http://127.0.0.1:84;
+                proxy_set_header Host $http_host;
+        }
+
+}
