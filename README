@@ -9,9 +9,9 @@ you need
 - nginx (>= 0.7.67)
 - varnish (>= 2.1)
 - apache2 with php (>= 5.3)
-- mysql (>= 5.1) (optional, you can use the built in jackrabbit PM for testing)
 - java
-- jackrabbit (from http://jackrabbit.apache.org/)
+- jackrabbit-standalone-2.x.jar (from http://jackrabbit.apache.org/)
+- mysql (>= 5.1) (optional, you can use the built in jackrabbit PM for testing)
 
 you need the following packages from debian lenny-(backports) (and everything which those packages depend on)
 
@@ -19,3 +19,20 @@ libapache2-mod-php5  php5-curl php5-cli  php5-apc
 apache2-mpm-prefork  apache2.2-common  
 varnish    nginx     openjdk-6-jre 
 mysql-server-5.1     mysql-client-5.1   
+
+*** INSTALL ***
+
+* copy/symlink all the files from the etc directory into your debian /etc directory
+* copy/symlink all the files from the var/www directory into your debian /var/www directory
+* mkdir /var/jackrabbit
+* copy/symlink all the files from the var/jackrabbit directory into your debian /var/jackrabbit directory
+* mv jackrabbit-standalone-2.x.jar  /var/jackrabbit/jackrabbit-standalone-2.1.jar
+* restart everything
+/etc/init.d/nginx restart
+/etc/init.d/varnish restart
+/etc/init.d/apache2 restart
+/var/www/jackrabbit/startJackrabbit.sh &
+
+* if you want to fill the repo with some data, start "/var/www/jackrabbit/fillrepo.php"
+
+* Call http://$yourip.com/
