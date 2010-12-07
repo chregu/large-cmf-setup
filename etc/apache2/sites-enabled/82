@@ -1,0 +1,11 @@
+<VirtualHost *:82>
+        ServerAdmin webmaster@localhost
+
+        DocumentRoot /var/www/frontend/
+
+        CustomLog /var/log/apache2/82-access.log combined
+        <Directory /var/www/frontend>
+                Options -Indexes FollowSymLinks MultiViews
+                AllowOverride All
+        </Directory>
+</VirtualHost>
